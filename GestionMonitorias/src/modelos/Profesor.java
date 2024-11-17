@@ -10,7 +10,8 @@ import java.util.ArrayList;
  *
  * @author Casa Verano
  */
-public class Profesor extends Usuario{
+public class Profesor extends Usuario {
+
     private int codigo;
     private ArrayList<Curso> cursos;
     private ArrayList<RProfesor> resenas;
@@ -49,9 +50,18 @@ public class Profesor extends Usuario{
     public ArrayList<RProfesor> getResenas() {
         return resenas;
     }
-    
-    
-    
-   
-    
+
+    public Curso buscarCurso(int codigoMateria) {
+        for (int i = 0; i < cursos.size(); i++) {
+            if (cursos.get(i).getMateria().getCodigo() == codigoMateria) {
+                return cursos.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Estudiante_Curso buscarEstudianteEnCurso(int codigoEstudiante, int codigoMateria) {
+        return buscarCurso(codigoMateria).buscar(codigoEstudiante);
+    }
+
 }

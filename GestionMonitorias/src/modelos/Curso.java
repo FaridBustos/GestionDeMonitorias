@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Casa Verano
  */
 public class Curso implements gestionable<Estudiante_Curso> {
+
     private Materia materia;
     private int grupo;
     private Profesor profesor;
@@ -23,8 +24,6 @@ public class Curso implements gestionable<Estudiante_Curso> {
         this.profesor = profesor;
         this.estudiantes = new ArrayList<>();
     }
-    
-    
 
     @Override
     public boolean add(Estudiante_Curso x) {
@@ -32,19 +31,19 @@ public class Curso implements gestionable<Estudiante_Curso> {
     }
 
     @Override
-    public boolean delete(int codigo) {
-        Estudiante_Curso x = buscar(codigo);
-        if(x != null){
+    public boolean delete(int codigoEstudiante) {
+        Estudiante_Curso x = buscar(codigoEstudiante);
+        if (x != null) {
             return estudiantes.remove(x);
-        }else{
+        } else {
             return false;
         }
     }
 
     @Override
-    public Estudiante_Curso buscar(int codigo) {
+    public Estudiante_Curso buscar(int codigoEstudiante) {
         for (int i = 0; i < estudiantes.size(); i++) {
-            if(estudiantes.get(i).getEstudiante().getCodigo() == codigo){
+            if (estudiantes.get(i).getEstudiante().getCodigo() == codigoEstudiante) {
                 return estudiantes.get(i);
             }
         }
@@ -99,7 +98,5 @@ public class Curso implements gestionable<Estudiante_Curso> {
     public ArrayList<Estudiante_Curso> getEstudiantes() {
         return estudiantes;
     }
-    
-    
-    
+
 }

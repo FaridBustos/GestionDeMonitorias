@@ -44,10 +44,12 @@ public class Universidad {
         return null;
     }
 
+    // Hisotira 2
     public boolean ingresarMateria(Materia x) {
         return getMaterias().add(x);
     }
 
+    // Hisotira 2
     public boolean eliminarMateria(int codigo) {
         Materia x = buscarMateria(codigo);
         if (x != null) {
@@ -57,6 +59,7 @@ public class Universidad {
         }
     }
 
+    // Hisotira 2
     public Materia buscarMateria(int codigo) {
         for (int i = 0; i < getUsuarios().size(); i++) {
             if (materias.get(i).getCodigo() == codigo) {
@@ -179,6 +182,7 @@ public class Universidad {
 
     }
 
+    //Historia
     public boolean sirvioMonitoria(int codigoEstudiante, int codigoMateria) {
 
         //verificar si el estudiante fue a monitorias de dicha materia
@@ -193,64 +197,97 @@ public class Universidad {
 
         // verificar si el estudiante gano la materia
         boolean haGanado = haGanadoLaMateria(codigoEstudiante, codigoMateria);
-        
+
         // si gano la materia y fue a monitoria, entonces le sirvio la monitoria
         return haGanado && haIdoAMonitoria;
-               
+
     }
-    
-    public float tasaDeExito(int codigoMateria){ // historia de usuario 7
+
+    // historia de usuario 7
+    public float tasaDeExito(int codigoMateria) {
         float tasa = obtenerTasaRepitentes(codigoMateria);
-        if(tasa != 0){
+        if (tasa != 0) {
             return tasa - 1;
-        }else{
+        } else {
             return 0;
         }
-            
+
     }
-    
-    public float tasaDesercionProfesor(int codigoProfesor, int codigoMateria){ // historia 8
-        Profesor p = buscarProfesor(codigoProfesor);
-        ArrayList<Estudiante_Curso> todosEstu = new ArrayList<>();
-        if(p != null){
-            ArrayList<Curso> cursos = p.getCursos();
-            for (int i = 0; i < cursos.size(); i++) {
-                if(cursos.get(i).getMateria().getCodigo() == codigoMateria){
-                    ArrayList<Estudiante_Curso> estud = cursos.get(i).getEstudiantes();
-                    for (int j = 0; j < estud.size(); j++) {
-                        todosEstu.add(estud.get(j));
+
+    public float tasaDesercionProfesor(int codigoProfesor, int codigoMateria) { // historia 8
+        Profesor p = buscarProfesor(codigoProfesor); // Buscamos al profesor
+
+        ArrayList<Estudiante_Curso> todosEstu = new ArrayList<>(); // inicializamos un array vacio
+
+        if (p != null) { // Si el profesor existe
+            ArrayList<Curso> cursos = p.getCursos(); // obtenemos los cursos del profesor
+            for (int i = 0; i < cursos.size(); i++) { // recorremos el array de cursos del profesor
+                if (cursos.get(i).getMateria().getCodigo() == codigoMateria) { // si el curso actual es de la materia que estamos buscando
+                    ArrayList<Estudiante_Curso> estud = cursos.get(i).getEstudiantes(); // obten todos los estudiantes de dicho curso
+                    for (int j = 0; j < estud.size(); j++) { // recorre todos los estudiantes del curso
+                        todosEstu.add(estud.get(j)); // Ingresa a los estudiantes al array de todos los estudiantes
                     }
                 }
             }
         }
-        int totalEstudiantes = todosEstu.size();
-        int estudiantesPerdidos = 0;
-        for (int i = 0; i < todosEstu.size(); i++) {
-            if(todosEstu.get(i).calcularNotaFinal() < 300){
-                estudiantesPerdidos++;
+        int totalEstudiantes = todosEstu.size(); // obtenemos el total de estudiantes
+        int estudiantesPerdidos = 0; // inicializamos la cantidad de estudiantes que han perdido la materia a 0
+        for (int i = 0; i < todosEstu.size(); i++) { // recorremos el array de todos los estudiantes de una materia
+            if (todosEstu.get(i).calcularNotaFinal() < 300) { // si la nota final del estudiante es menor a 300
+                estudiantesPerdidos++; // aumentamos en 1 la poblacion de estudiantes perdidos
             }
         }
-        
-        if(totalEstudiantes != 0){
-            return estudiantesPerdidos/totalEstudiantes;
-        }else{
-            return 0;
+
+        if (totalEstudiantes != 0) {// si el total de estudiantes no es 0
+            return estudiantesPerdidos / totalEstudiantes; // retornamos el porcentaje de estudiantes perdidos
+        } else {
+            return 0; // de otro modo retorna 0
         }
-        
+
     }
-    
-    public Profesor buscarProfesor(int codigoProfesor){
+
+    public Profesor buscarProfesor(int codigoProfesor) {
         Profesor p = null;
         Profesor x = null;
         for (int i = 0; i < usuarios.size(); i++) {
-            if(usuarios.get(i) instanceof Profesor){
+            if (usuarios.get(i) instanceof Profesor) {
                 p = (Profesor) usuarios.get(i);
-                if(p.getCodigo() == codigoProfesor){
+                if (p.getCodigo() == codigoProfesor) {
                     x = p;
                 }
             }
         }
         return x;
+    }
+
+    // Historia 1
+    public boolean ingresarEstudianteEnMateria(Estudiante estudiante, int codigoMateria, int codigoProfesor) {
+        if (buscarProfesor(codigoProfesor) != null) {
+            if (buscarProfesor(codigoProfesor).buscarCurso(codigoMateria) != null) {
+                buscarProfesor(codigoProfesor).buscarCurso(codigoMateria).add(new Estudiante_Curso(estudiante, 0, 0, 0, "activo"));
+            }
+        }
+        return false;
+    }
+
+    // Historia 1
+    public boolean eliminarEstudianteMateria(int codigoEstudiante, int codigoMateria, int codigoProfesor) {
+        if (buscarProfesor(codigoProfesor) != null) {
+            if (buscarProfesor(codigoProfesor).buscarCurso(codigoMateria) != null) {
+                return buscarProfesor(codigoProfesor).buscarCurso(codigoMateria).delete(codigoEstudiante);
+            }
+        }
+        return false;
+    }
+
+    // Historia 1
+    public Estudiante_Curso obtenerEstudianteDeMateria(int codigoEstudiante, int codigoMateria, int codigoProfesor) {
+        if (buscarProfesor(codigoProfesor) != null) {
+            if (buscarProfesor(codigoProfesor).buscarCurso(codigoMateria) != null) {
+                return buscarProfesor(codigoProfesor).buscarCurso(codigoMateria).buscar(codigoEstudiante);
+            }
+        }
+        return null;
     }
 
 }
