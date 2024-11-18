@@ -6,8 +6,8 @@ package Vistas;
 
 import Controladores.ControladorLogin;
 import Excepciones.LoginException;
+import modelos.Estudiante;
 import modelos.Universidad;
-import modelos.Usuario;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.uni = new Universidad();
-        uni.ingresarUsuario(new Usuario("farid", "farid", "admin", "FARID BUSTOS"));
+        uni.ingresarUsuario(new Estudiante(1, "ingenieria", "sistemas", "activo", "farid", "farid", "estudiante", "farid bustos"));
 
     }
 

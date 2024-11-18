@@ -14,7 +14,7 @@ public class Profesor extends Usuario {
 
     private int codigo;
     private ArrayList<Curso> cursos;
-    private ArrayList<RProfesor> resenas;
+    private ArrayList<Resena> resenas;
 
     public Profesor(int codigo, String username, String password, String role, String fullName) {
         super(username, password, role, fullName);
@@ -48,7 +48,7 @@ public class Profesor extends Usuario {
      * @return the resemas
      */
     //Historia 18
-    public ArrayList<RProfesor> getResenas() {
+    public ArrayList<Resena> getResenas() {
         return resenas;
     }
 
@@ -122,20 +122,20 @@ public class Profesor extends Usuario {
     }
 
     //historia 4
-    public boolean agregarResena(RProfesor x) {
+    public boolean agregarResena(Resena x) {
         return resenas.add(x);
     }
 
     //historia 4
     public boolean eliminarResena(int codigoResena) {
-        RProfesor resena = buscarResena(codigoResena);
+        Resena resena = buscarResena(codigoResena);
         if (resena != null) {
             resenas.remove(resena);
         }
         return false;
     }
 
-    public RProfesor buscarResena(int codigoResena) {
+    public Resena buscarResena(int codigoResena) {
         for (int i = 0; i < resenas.size(); i++) {
             if (resenas.get(i).getCodigo() == codigoResena) {
                 return resenas.get(i);

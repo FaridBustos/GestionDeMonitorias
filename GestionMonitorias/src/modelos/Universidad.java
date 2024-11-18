@@ -145,6 +145,15 @@ public class Universidad {
         this.usuarioActual = usuarioActual;
     }
 
+    public Materia obtenerMateria(int codigo) {
+        for (int i = 0; i < materias.size(); i++) {
+            if (materias.get(i).getCodigo() == codigo) {
+                return materias.get(i);
+            }
+        }
+        return null;
+    }
+
     // Historia 14
     public ArrayList<Profesor> obtenerProfesores() {
         ArrayList<Profesor> profesores = new ArrayList<>();
