@@ -4,10 +4,11 @@
  */
 package Vistas;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorLogin;
 import Excepciones.LoginException;
-import modelos.Estudiante;
 import modelos.Universidad;
+import modelos.Usuario;
 
 /**
  *
@@ -16,14 +17,25 @@ import modelos.Universidad;
 public class Login extends javax.swing.JFrame {
 
     Universidad uni;
+    ArchivoUniversidad arch;
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        this.uni = new Universidad();
-        uni.ingresarUsuario(new Estudiante(1, "ingenieria", "sistemas", "activo", "farid", "farid", "estudiante", "farid bustos"));
+        try {
+            this.arch = new ArchivoUniversidad();
+            Universidad universi = arch.recuperar();
+            if (universi == null) {
+                universi = new Universidad();
+                universi.ingresarUsuario(new Usuario("admin", "admin", "admin", "ADMIN 1"));
+
+            }
+            this.uni = universi;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -112,7 +124,7 @@ public class Login extends javax.swing.JFrame {
             String pass = txt_password.getText();
 
             if (CL.iniciarSesion(user, pass)) {
-                Navegacion nav = new Navegacion(uni);
+                Navegacion nav = new Navegacion(uni, arch);
                 nav.setVisible(true);
                 this.dispose();
 

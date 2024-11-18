@@ -5,13 +5,14 @@
 package modelos;
 
 import interfaces.gestionable;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Casa Verano
  */
-public class Curso implements gestionable<Estudiante_Curso> {
+public class Curso implements gestionable<Estudiante_Curso>, Serializable {
 
     private Materia materia;
     private int grupo;

@@ -4,13 +4,14 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Casa Verano
  */
-public class Estudiante extends Usuario {
+public class Estudiante extends Usuario implements Serializable {
 
     private int codigo;
     private String facultad;

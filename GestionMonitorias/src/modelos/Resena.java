@@ -4,11 +4,13 @@
  */
 package modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Casa Verano
  */
-public class Resena {
+public class Resena implements Serializable {
 
     private String descripcion;
     private float puntaje;

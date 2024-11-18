@@ -4,15 +4,18 @@
  */
 package modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Casa Verano
  */
-public class Usuario {
+public class Usuario implements Serializable {
+
     private String username;
     private String password;
     private String role;
-    private String fullName;    
+    private String fullName;
 
     public Usuario(String username, String password, String role, String fullName) {
         this.username = username;

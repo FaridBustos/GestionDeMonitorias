@@ -4,6 +4,7 @@
  */
 package Vistas.Estudiantes;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorEstudiantes;
 import modelos.Universidad;
 
@@ -13,14 +14,16 @@ import modelos.Universidad;
  */
 public class AgregarEstudiante extends javax.swing.JFrame {
 
+    private ArchivoUniversidad arch;
     private Universidad uni;
 
     /**
      * Creates new form AgregarEstudiante
      */
-    public AgregarEstudiante(Universidad uni) {
+    public AgregarEstudiante(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**

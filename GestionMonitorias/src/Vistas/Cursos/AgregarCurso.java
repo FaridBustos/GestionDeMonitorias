@@ -128,7 +128,7 @@ public class AgregarCurso extends javax.swing.JFrame {
             int grupo = Integer.parseInt(txt_grupo.getText());
 
             CC.agregarCurso(codigoMateria, codigoProfesor, grupo);
-            this.dispose();
+
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }

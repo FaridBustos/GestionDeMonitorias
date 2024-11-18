@@ -5,13 +5,14 @@
 package modelos;
 
 import interfaces.gestionable;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Casa Verano
  */
-public class Materia implements gestionable<Monitoria> {
+public class Materia implements gestionable<Monitoria>, Serializable {
 
     private String nombre;
     private int codigo;

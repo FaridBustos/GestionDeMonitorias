@@ -4,6 +4,7 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.Set;
  *
  * @author Casa Verano
  */
-public class Universidad {
+public class Universidad implements Serializable {
 
     private ArrayList<Usuario> usuarios;
     private ArrayList<Materia> materias;

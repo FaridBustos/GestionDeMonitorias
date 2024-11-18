@@ -4,11 +4,13 @@
  */
 package modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Casa Verano
  */
-public class Estudiante_Curso {
+public class Estudiante_Curso implements Serializable {
 
     private Estudiante estudiante;
     private float nota1;

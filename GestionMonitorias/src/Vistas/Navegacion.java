@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import Archivos.ArchivoUniversidad;
 import Vistas.Cursos.AgregarCurso;
 import Vistas.Cursos.EliminarCurso;
 import Vistas.Cursos.VerCursos;
@@ -31,13 +32,15 @@ import modelos.Universidad;
 public class Navegacion extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form Navegacion
      */
-    public Navegacion(Universidad uni) {
+    public Navegacion(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
         label_fullname.setText(uni.getUsuarioActual().getFullName());
         label_role.setText(uni.getUsuarioActual().getRole());
     }
@@ -297,92 +300,92 @@ public class Navegacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarEstudianteActionPerformed
-        AgregarEstudiante AE = new AgregarEstudiante(this.uni);
+        AgregarEstudiante AE = new AgregarEstudiante(this.uni, this.arch);
         AE.setVisible(true);
     }//GEN-LAST:event_btn_agregarEstudianteActionPerformed
 
     private void btn_eliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarEstudianteActionPerformed
-        EliminarEstudiante EE = new EliminarEstudiante(uni);
+        EliminarEstudiante EE = new EliminarEstudiante(uni, this.arch);
         EE.setVisible(true);
     }//GEN-LAST:event_btn_eliminarEstudianteActionPerformed
 
     private void btn_verEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verEstudiantesActionPerformed
-        VerEstudiantes VE = new VerEstudiantes(uni);
+        VerEstudiantes VE = new VerEstudiantes(uni, this.arch);
         VE.setVisible(true);
     }//GEN-LAST:event_btn_verEstudiantesActionPerformed
 
     private void btn_agregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarProfesorActionPerformed
-        IngresarProfesor IP = new IngresarProfesor(uni);
+        IngresarProfesor IP = new IngresarProfesor(uni, this.arch);
         IP.setVisible(true);
     }//GEN-LAST:event_btn_agregarProfesorActionPerformed
 
     private void btn_eliminarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarProfesorActionPerformed
-        EliminarProfesor EP = new EliminarProfesor(uni);
+        EliminarProfesor EP = new EliminarProfesor(uni, this.arch);
         EP.setVisible(true);
     }//GEN-LAST:event_btn_eliminarProfesorActionPerformed
 
     private void btn_verProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verProfesorActionPerformed
-        VerProfesores VP = new VerProfesores(uni);
+        VerProfesores VP = new VerProfesores(uni, this.arch);
         VP.setVisible(true);
     }//GEN-LAST:event_btn_verProfesorActionPerformed
 
     private void btn_agregarResenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarResenaActionPerformed
-        AgregarResena AR = new AgregarResena(uni);
+        AgregarResena AR = new AgregarResena(uni, this.arch);
         AR.setVisible(true);
     }//GEN-LAST:event_btn_agregarResenaActionPerformed
 
     private void btn_eliminarResenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarResenaActionPerformed
-        EliminarResena ER = new EliminarResena(uni);
+        EliminarResena ER = new EliminarResena(uni, this.arch);
         ER.setVisible(true);
     }//GEN-LAST:event_btn_eliminarResenaActionPerformed
 
     private void btn_verResenasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verResenasActionPerformed
-        VerResenas VR = new VerResenas(uni);
+        VerResenas VR = new VerResenas(uni, this.arch);
         VR.setVisible(true);
     }//GEN-LAST:event_btn_verResenasActionPerformed
 
     private void btn_agregarMonitoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarMonitoriaActionPerformed
-        AgregarMonitoria AM = new AgregarMonitoria(uni);
+        AgregarMonitoria AM = new AgregarMonitoria(uni, this.arch);
         AM.setVisible(true);
     }//GEN-LAST:event_btn_agregarMonitoriaActionPerformed
 
     private void btn_eliminarMonitoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarMonitoriaActionPerformed
-        EliminarMonitoria EM = new EliminarMonitoria(uni);
+        EliminarMonitoria EM = new EliminarMonitoria(uni, this.arch);
         EM.setVisible(true);
     }//GEN-LAST:event_btn_eliminarMonitoriaActionPerformed
 
     private void btn_verMonitoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verMonitoriasActionPerformed
-        VerMonitorias VM = new VerMonitorias(uni);
+        VerMonitorias VM = new VerMonitorias(uni, this.arch);
         VM.setVisible(true);
     }//GEN-LAST:event_btn_verMonitoriasActionPerformed
 
     private void btn_agregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarMateriaActionPerformed
-        agregarMateria AM = new agregarMateria(uni);
+        agregarMateria AM = new agregarMateria(uni, this.arch);
         AM.setVisible(true);
     }//GEN-LAST:event_btn_agregarMateriaActionPerformed
 
     private void btn_eliminarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarMateriaActionPerformed
-        EliminarMateria EM = new EliminarMateria(uni);
+        EliminarMateria EM = new EliminarMateria(uni, this.arch);
         EM.setVisible(true);
     }//GEN-LAST:event_btn_eliminarMateriaActionPerformed
 
     private void btn_verMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verMateriasActionPerformed
-        VerMaterias VM = new VerMaterias(uni);
+        VerMaterias VM = new VerMaterias(uni, this.arch);
         VM.setVisible(true);
     }//GEN-LAST:event_btn_verMateriasActionPerformed
 
     private void btn_agregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCursoActionPerformed
-        AgregarCurso AC = new AgregarCurso(uni);
+        AgregarCurso AC = new AgregarCurso(uni, this.arch);
         AC.setVisible(true);
     }//GEN-LAST:event_btn_agregarCursoActionPerformed
 
     private void btn_eliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarCursoActionPerformed
-        EliminarCurso EC = new EliminarCurso(uni);
+        EliminarCurso EC = new EliminarCurso(uni, this.arch);
         EC.setVisible(true);
     }//GEN-LAST:event_btn_eliminarCursoActionPerformed
 
     private void btn_verCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verCursoActionPerformed
-        VerCursos VC = new VerCursos(uni);
+        VerCursos VC = new VerCursos(uni, this.arch);
         VC.setVisible(true);
 
     }//GEN-LAST:event_btn_verCursoActionPerformed

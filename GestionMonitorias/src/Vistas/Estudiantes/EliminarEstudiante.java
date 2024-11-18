@@ -4,6 +4,7 @@
  */
 package Vistas.Estudiantes;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorEstudiantes;
 import modelos.Universidad;
 
@@ -14,13 +15,15 @@ import modelos.Universidad;
 public class EliminarEstudiante extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form EliminarEstudiante
      */
-    public EliminarEstudiante(Universidad uni) {
+    public EliminarEstudiante(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
