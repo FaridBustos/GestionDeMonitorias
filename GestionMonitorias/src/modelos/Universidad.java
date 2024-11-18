@@ -57,6 +57,16 @@ public class Universidad {
         return false;
     }
 
+    public boolean eliminarProfesor(int codigo) {
+        ArrayList<Profesor> prof = obtenerProfesores();
+        for (int i = 0; i < prof.size(); i++) {
+            if (prof.get(i).getCodigo() == codigo) {
+                return usuarios.remove(prof.get(i));
+            }
+        }
+        return false;
+    }
+
     public Usuario buscarUsuario(String username) {
         for (int i = 0; i < getUsuarios().size(); i++) {
             if (getUsuarios().get(i).getUsername().equalsIgnoreCase(username)) {
