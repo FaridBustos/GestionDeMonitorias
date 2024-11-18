@@ -4,22 +4,24 @@
  */
 package modelos;
 
+import interfaces.gestionable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Casa Verano
  */
-public class Monitoria {
+public class Monitoria implements gestionable<Estudiante> {
+
+    private int codigo;
     private ArrayList<Estudiante> asistencias;
-    private ArrayList<Object> resenas;
     private Fecha fecha;
     private Hora horaInicio;
     private Hora horaFin;
 
-    public Monitoria(Fecha fecha, Hora horaInicio, Hora horaFin) {
+    public Monitoria(int codigo, Fecha fecha, Hora horaInicio, Hora horaFin) {
+        this.codigo = codigo;
         this.asistencias = new ArrayList<>();
-        this.resenas = new ArrayList<>();
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -30,27 +32,6 @@ public class Monitoria {
      */
     public ArrayList<Estudiante> getAsistencias() {
         return asistencias;
-    }
-
-    /**
-     * @param asistencias the asistencias to set
-     */
-    public void setAsistencias(ArrayList<Estudiante> asistencias) {
-        this.asistencias = asistencias;
-    }
-
-    /**
-     * @return the resenas
-     */
-    public ArrayList<Object> getResenas() {
-        return resenas;
-    }
-
-    /**
-     * @param resenas the resenas to set
-     */
-    public void setResenas(ArrayList<Object> resenas) {
-        this.resenas = resenas;
     }
 
     /**
@@ -94,6 +75,44 @@ public class Monitoria {
     public void setHoraFin(Hora horaFin) {
         this.horaFin = horaFin;
     }
-    
-    
+
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    // historia 19
+    @Override
+    public boolean add(Estudiante x) {
+        return asistencias.add(x);
+    }
+
+    @Override
+    public boolean delete(int codigo) {
+        Estudiante es = buscar(codigo);
+        if (es != null) {
+            return asistencias.remove(es);
+        }
+        return false;
+    }
+
+    @Override
+    public Estudiante buscar(int codigo) {
+        for (int i = 0; i < asistencias.size(); i++) {
+            if (asistencias.get(i).getCodigo() == codigo) {
+                return asistencias.get(i);
+            }
+        }
+        return null;
+    }
+
 }
