@@ -15,13 +15,11 @@ public class Curso implements gestionable<Estudiante_Curso> {
 
     private Materia materia;
     private int grupo;
-    private Profesor profesor;
     private ArrayList<Estudiante_Curso> estudiantes;
 
-    public Curso(Materia materia, int grupo, Profesor profesor) {
+    public Curso(Materia materia, int grupo) {
         this.materia = materia;
         this.grupo = grupo;
-        this.profesor = profesor;
         this.estudiantes = new ArrayList<>();
     }
 
@@ -76,20 +74,6 @@ public class Curso implements gestionable<Estudiante_Curso> {
      */
     public void setGrupo(int grupo) {
         this.grupo = grupo;
-    }
-
-    /**
-     * @return the profesor
-     */
-    public Profesor getProfesor() {
-        return profesor;
-    }
-
-    /**
-     * @param profesor the profesor to set
-     */
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
     }
 
     /**

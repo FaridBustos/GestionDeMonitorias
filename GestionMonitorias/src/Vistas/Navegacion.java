@@ -4,9 +4,15 @@
  */
 package Vistas;
 
+import Vistas.Cursos.AgregarCurso;
+import Vistas.Cursos.EliminarCurso;
+import Vistas.Cursos.VerCursos;
 import Vistas.Estudiantes.AgregarEstudiante;
 import Vistas.Estudiantes.EliminarEstudiante;
 import Vistas.Estudiantes.VerEstudiantes;
+import Vistas.Materias.EliminarMateria;
+import Vistas.Materias.VerMaterias;
+import Vistas.Materias.agregarMateria;
 import Vistas.Monitorias.AgregarMonitoria;
 import Vistas.Monitorias.EliminarMonitoria;
 import Vistas.Monitorias.VerMonitorias;
@@ -59,17 +65,17 @@ public class Navegacion extends javax.swing.JFrame {
         btn_eliminarProfesor = new javax.swing.JMenuItem();
         btn_verProfesor = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        btn_agregarCurso = new javax.swing.JMenuItem();
+        btn_eliminarCurso = new javax.swing.JMenuItem();
+        btn_verCurso = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         btn_agregarResena = new javax.swing.JMenuItem();
         btn_eliminarResena = new javax.swing.JMenuItem();
         btn_verResenas = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
+        btn_agregarMateria = new javax.swing.JMenuItem();
+        btn_eliminarMateria = new javax.swing.JMenuItem();
+        btn_verMaterias = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         btn_agregarMonitoria = new javax.swing.JMenuItem();
         btn_eliminarMonitoria = new javax.swing.JMenuItem();
@@ -145,14 +151,29 @@ public class Navegacion extends javax.swing.JFrame {
 
         jMenu3.setText("Cursos");
 
-        jMenuItem7.setText("Agregar");
-        jMenu3.add(jMenuItem7);
+        btn_agregarCurso.setText("Agregar");
+        btn_agregarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarCursoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btn_agregarCurso);
 
-        jMenuItem8.setText("Eliminar");
-        jMenu3.add(jMenuItem8);
+        btn_eliminarCurso.setText("Eliminar");
+        btn_eliminarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarCursoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btn_eliminarCurso);
 
-        jMenuItem9.setText("Ver");
-        jMenu3.add(jMenuItem9);
+        btn_verCurso.setText("Ver");
+        btn_verCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verCursoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btn_verCurso);
 
         jMenuBar1.add(jMenu3);
 
@@ -186,14 +207,29 @@ public class Navegacion extends javax.swing.JFrame {
 
         jMenu5.setText("Materias");
 
-        jMenuItem13.setText("Agregar");
-        jMenu5.add(jMenuItem13);
+        btn_agregarMateria.setText("Agregar");
+        btn_agregarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarMateriaActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btn_agregarMateria);
 
-        jMenuItem14.setText("Eliminar");
-        jMenu5.add(jMenuItem14);
+        btn_eliminarMateria.setText("Eliminar");
+        btn_eliminarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarMateriaActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btn_eliminarMateria);
 
-        jMenuItem15.setText("Ver");
-        jMenu5.add(jMenuItem15);
+        btn_verMaterias.setText("Ver");
+        btn_verMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verMateriasActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btn_verMaterias);
 
         jMenuBar1.add(jMenu5);
 
@@ -320,6 +356,37 @@ public class Navegacion extends javax.swing.JFrame {
         VM.setVisible(true);
     }//GEN-LAST:event_btn_verMonitoriasActionPerformed
 
+    private void btn_agregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarMateriaActionPerformed
+        agregarMateria AM = new agregarMateria(uni);
+        AM.setVisible(true);
+    }//GEN-LAST:event_btn_agregarMateriaActionPerformed
+
+    private void btn_eliminarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarMateriaActionPerformed
+        EliminarMateria EM = new EliminarMateria(uni);
+        EM.setVisible(true);
+    }//GEN-LAST:event_btn_eliminarMateriaActionPerformed
+
+    private void btn_verMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verMateriasActionPerformed
+        VerMaterias VM = new VerMaterias(uni);
+        VM.setVisible(true);
+    }//GEN-LAST:event_btn_verMateriasActionPerformed
+
+    private void btn_agregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCursoActionPerformed
+        AgregarCurso AC = new AgregarCurso(uni);
+        AC.setVisible(true);
+    }//GEN-LAST:event_btn_agregarCursoActionPerformed
+
+    private void btn_eliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarCursoActionPerformed
+        EliminarCurso EC = new EliminarCurso(uni);
+        EC.setVisible(true);
+    }//GEN-LAST:event_btn_eliminarCursoActionPerformed
+
+    private void btn_verCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verCursoActionPerformed
+        VerCursos VC = new VerCursos(uni);
+        VC.setVisible(true);
+
+    }//GEN-LAST:event_btn_verCursoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -356,15 +423,21 @@ public class Navegacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btn_agregarCurso;
     private javax.swing.JMenuItem btn_agregarEstudiante;
+    private javax.swing.JMenuItem btn_agregarMateria;
     private javax.swing.JMenuItem btn_agregarMonitoria;
     private javax.swing.JMenuItem btn_agregarProfesor;
     private javax.swing.JMenuItem btn_agregarResena;
+    private javax.swing.JMenuItem btn_eliminarCurso;
     private javax.swing.JMenuItem btn_eliminarEstudiante;
+    private javax.swing.JMenuItem btn_eliminarMateria;
     private javax.swing.JMenuItem btn_eliminarMonitoria;
     private javax.swing.JMenuItem btn_eliminarProfesor;
     private javax.swing.JMenuItem btn_eliminarResena;
+    private javax.swing.JMenuItem btn_verCurso;
     private javax.swing.JMenuItem btn_verEstudiantes;
+    private javax.swing.JMenuItem btn_verMaterias;
     private javax.swing.JMenuItem btn_verMonitorias;
     private javax.swing.JMenuItem btn_verProfesor;
     private javax.swing.JMenuItem btn_verResenas;
@@ -377,12 +450,6 @@ public class Navegacion extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JLabel label_fullname;
     private javax.swing.JLabel label_role;
     private javax.swing.JLabel label_username;

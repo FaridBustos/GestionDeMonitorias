@@ -37,6 +37,16 @@ public class Universidad {
         }
     }
 
+    public Estudiante buscarEstudiante(int codigo) {
+        ArrayList<Estudiante> estu = obtenerEstudiantes();
+        for (int i = 0; i < estu.size(); i++) {
+            if (estu.get(i).getCodigo() == codigo) {
+                return estu.get(i);
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Estudiante> obtenerEstudiantes() {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         for (int i = 0; i < usuarios.size(); i++) {
