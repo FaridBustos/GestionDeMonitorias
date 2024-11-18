@@ -9,6 +9,7 @@ package modelos;
  * @author Casa Verano
  */
 public class Estudiante_Curso {
+
     private Estudiante estudiante;
     private float nota1;
     private float nota2;
@@ -22,10 +23,13 @@ public class Estudiante_Curso {
         this.nota3 = nota3;
         this.estado = estado;
     }
-    
-    
-    public float calcularNotaFinal(){
-        return (getNota1()+getNota2()+getNota3())/3;
+
+    public float calcularNotaFinal() {
+        return (getNota1() + getNota2() + getNota3()) / 3;
+    }
+
+    public boolean ganoMateria() {
+        return calcularNotaFinal() >= 300;
     }
 
     /**
@@ -96,5 +100,13 @@ public class Estudiante_Curso {
      */
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public boolean estudianteRetiro() {
+        return this.estado.equalsIgnoreCase("retirado");
+    }
+
+    public boolean estudianteActivo() {
+        return this.estado.equalsIgnoreCase("activo");
     }
 }

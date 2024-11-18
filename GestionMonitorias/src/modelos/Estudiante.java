@@ -4,11 +4,14 @@
  */
 package modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author Casa Verano
  */
-public class Estudiante extends Usuario{
+public class Estudiante extends Usuario {
+
     private int codigo;
     private String facultad;
     private String programa;
@@ -20,6 +23,40 @@ public class Estudiante extends Usuario{
         this.facultad = facultad;
         this.programa = programa;
         this.estado = estado;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.codigo;
+        hash = 47 * hash + Objects.hashCode(this.facultad);
+        hash = 47 * hash + Objects.hashCode(this.programa);
+        hash = 47 * hash + Objects.hashCode(this.estado);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Estudiante other = (Estudiante) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        if (!Objects.equals(this.facultad, other.facultad)) {
+            return false;
+        }
+        if (!Objects.equals(this.programa, other.programa)) {
+            return false;
+        }
+        return Objects.equals(this.estado, other.estado);
     }
 
     /**
@@ -77,7 +114,5 @@ public class Estudiante extends Usuario{
     public void setEstado(String estado) {
         this.estado = estado;
     }
-         
-    
-    
+
 }
