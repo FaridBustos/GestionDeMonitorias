@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Vistas.Estudiantes.AgregarEstudiante;
+import Vistas.Estudiantes.EliminarEstudiante;
+import Vistas.Estudiantes.VerEstudiantes;
 import modelos.Universidad;
 
 /**
@@ -40,8 +43,8 @@ public class Navegacion extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btn_agregarEstudiante = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        btn_eliminarEstudiante = new javax.swing.JMenuItem();
+        btn_verEstudiantes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -85,11 +88,21 @@ public class Navegacion extends javax.swing.JFrame {
         });
         jMenu1.add(btn_agregarEstudiante);
 
-        jMenuItem2.setText("Eliminar");
-        jMenu1.add(jMenuItem2);
+        btn_eliminarEstudiante.setText("Eliminar");
+        btn_eliminarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarEstudianteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btn_eliminarEstudiante);
 
-        jMenuItem3.setText("Ver");
-        jMenu1.add(jMenuItem3);
+        btn_verEstudiantes.setText("Ver");
+        btn_verEstudiantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verEstudiantesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btn_verEstudiantes);
 
         jMenuBar1.add(jMenu1);
 
@@ -194,8 +207,19 @@ public class Navegacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarEstudianteActionPerformed
-        // TODO add your handling code here:
+        AgregarEstudiante AE = new AgregarEstudiante(this.uni);
+        AE.setVisible(true);
     }//GEN-LAST:event_btn_agregarEstudianteActionPerformed
+
+    private void btn_eliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarEstudianteActionPerformed
+        EliminarEstudiante EE = new EliminarEstudiante(uni);
+        EE.setVisible(true);
+    }//GEN-LAST:event_btn_eliminarEstudianteActionPerformed
+
+    private void btn_verEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verEstudiantesActionPerformed
+        VerEstudiantes VE = new VerEstudiantes(uni);
+        VE.setVisible(true);
+    }//GEN-LAST:event_btn_verEstudiantesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +258,8 @@ public class Navegacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btn_agregarEstudiante;
+    private javax.swing.JMenuItem btn_eliminarEstudiante;
+    private javax.swing.JMenuItem btn_verEstudiantes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -252,8 +278,6 @@ public class Navegacion extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

@@ -37,6 +37,26 @@ public class Universidad {
         }
     }
 
+    public ArrayList<Estudiante> obtenerEstudiantes() {
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i) instanceof Estudiante) {
+                estudiantes.add((Estudiante) usuarios.get(i));
+            }
+        }
+        return estudiantes;
+    }
+
+    public boolean eliminarEstudiante(int codigo) {
+        ArrayList<Estudiante> est = obtenerEstudiantes();
+        for (int i = 0; i < est.size(); i++) {
+            if (est.get(i).getCodigo() == codigo) {
+                return usuarios.remove(est.get(i));
+            }
+        }
+        return false;
+    }
+
     public Usuario buscarUsuario(String username) {
         for (int i = 0; i < getUsuarios().size(); i++) {
             if (getUsuarios().get(i).getUsername().equalsIgnoreCase(username)) {
