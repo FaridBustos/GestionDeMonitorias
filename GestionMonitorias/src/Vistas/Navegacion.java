@@ -5,6 +5,7 @@
 package Vistas;
 
 import Archivos.ArchivoUniversidad;
+import Vistas.AcercaDe.Nosotros;
 import Vistas.Cursos.AgregarCurso;
 import Vistas.Cursos.EliminarCurso;
 import Vistas.Cursos.Estudiantes.AgregarEstudianteCurso;
@@ -107,6 +108,7 @@ public class Navegacion extends javax.swing.JFrame {
         btn_sirvioMonitoria = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         btn_misNotas = new javax.swing.JMenuItem();
+        btn_nosotros = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -379,6 +381,14 @@ public class Navegacion extends javax.swing.JFrame {
         });
         jMenu7.add(btn_misNotas);
 
+        btn_nosotros.setText("Nosotros");
+        btn_nosotros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nosotrosActionPerformed(evt);
+            }
+        });
+        jMenu7.add(btn_nosotros);
+
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
@@ -410,7 +420,7 @@ public class Navegacion extends javax.swing.JFrame {
                 .addComponent(label_role)
                 .addGap(61, 61, 61)
                 .addComponent(ErrorMSG)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
@@ -642,6 +652,11 @@ public class Navegacion extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_misNotasActionPerformed
 
+    private void btn_nosotrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nosotrosActionPerformed
+        Nosotros N = new Nosotros();
+        N.setVisible(true);
+    }//GEN-LAST:event_btn_nosotrosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +713,7 @@ public class Navegacion extends javax.swing.JFrame {
     private javax.swing.JMenuItem btn_estBajoRendi;
     private javax.swing.JMenuItem btn_estudiantesEnMateria;
     private javax.swing.JMenuItem btn_misNotas;
+    private javax.swing.JMenuItem btn_nosotros;
     private javax.swing.JMenuItem btn_sirvioMonitoria;
     private javax.swing.JMenuItem btn_tasaRetiro;
     private javax.swing.JMenuItem btn_verAsistencias;
