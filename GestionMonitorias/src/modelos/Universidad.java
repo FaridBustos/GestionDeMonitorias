@@ -112,19 +112,19 @@ public class Universidad implements Serializable {
         return null;
     }
 
-    private boolean VerificarProfesor() {
+    public boolean VerificarProfesor() {
         return this.getUsuarioActual().getRole().equals("profesor");
     }
 
-    private boolean VerificarAdmin() {
+    public boolean VerificarAdmin() {
         return this.getUsuarioActual().getRole().equals("admin");
     }
 
-    private boolean VerificarMonitor() {
+    public boolean VerificarMonitor() {
         return this.getUsuarioActual().getRole().equals("monitor");
     }
 
-    private boolean VerificarEstudiante() {
+    public boolean VerificarEstudiante() {
         return this.getUsuarioActual().getRole().equals("estudiante");
     }
 
@@ -337,14 +337,8 @@ public class Universidad implements Serializable {
         return null;
     }
 
-    //Historia 8
-    public float tasaDeRetiroDeProfesor(int codigoMateria, int codigoProfesor) {
-        Profesor p = buscarProfesor(codigoProfesor);
-        if (p != null) {
-            return p.tasaDeRetiroDeProfesor(codigoMateria);
-        }
-        return 0;
-    }
+
+    
 
     private ArrayList<Integer> obtenerListaDeCodigosUnicos(ArrayList<Estudiante_Curso> allEstudiantes) {
         ArrayList<Integer> CodigosYaRevisados = new ArrayList<>();

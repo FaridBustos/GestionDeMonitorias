@@ -4,6 +4,7 @@
  */
 package Vistas.Resenas;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorResenas;
 import modelos.Universidad;
 
@@ -14,13 +15,14 @@ import modelos.Universidad;
 public class EliminarResena extends javax.swing.JFrame {
 
     private Universidad uni;
-
+    private ArchivoUniversidad arch;
     /**
      * Creates new form EliminarResena
      */
-    public EliminarResena(Universidad uni) {
+    public EliminarResena(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -124,6 +126,7 @@ public class EliminarResena extends javax.swing.JFrame {
             int codigoProfesor = Integer.parseInt(txt_codigoProfesor.getText());
             CR.eliminarResena(codigoProfesor, codigoResena);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }

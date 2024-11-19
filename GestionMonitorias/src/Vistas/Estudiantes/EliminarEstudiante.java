@@ -117,6 +117,7 @@ public class EliminarEstudiante extends javax.swing.JFrame {
 
             CE.eliminarEstudiante(codigo);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             errorMSG.setText(e.getMessage());
         }

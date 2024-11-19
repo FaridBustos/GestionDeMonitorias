@@ -4,6 +4,7 @@
  */
 package Vistas.Materias;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorMaterias;
 import modelos.Universidad;
 
@@ -14,13 +15,15 @@ import modelos.Universidad;
 public class agregarMateria extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form agregarMateria
      */
-    public agregarMateria(Universidad uni) {
+    public agregarMateria(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -129,6 +132,7 @@ public class agregarMateria extends javax.swing.JFrame {
 
             CM.agregarMateria(codigoMateria, codigoMonitor, nombre);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }

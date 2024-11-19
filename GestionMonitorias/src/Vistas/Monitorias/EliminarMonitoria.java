@@ -4,6 +4,7 @@
  */
 package Vistas.Monitorias;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorMonitorias;
 import modelos.Universidad;
 
@@ -14,13 +15,15 @@ import modelos.Universidad;
 public class EliminarMonitoria extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form EliminarMonitoria
      */
-    public EliminarMonitoria(Universidad uni) {
+    public EliminarMonitoria(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -117,6 +120,7 @@ public class EliminarMonitoria extends javax.swing.JFrame {
 
             CM.eliminarMonitoria(codigoMateria, codigoMonitoria);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             errorMSG.setText(e.getMessage());
         }

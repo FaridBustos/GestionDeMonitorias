@@ -2,25 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vistas.Cursos;
+package Vistas.Cursos.Estudiantes;
 
 import Archivos.ArchivoUniversidad;
-import Controladores.ControladorCursos;
+import Controladores.ControladorEstudianteCurso;
 import modelos.Universidad;
 
 /**
  *
- * @author farid
+ * @author Casa Verano
  */
-public class AgregarCurso extends javax.swing.JFrame {
-
+public class AgregarEstudianteCurso extends javax.swing.JFrame {
     private Universidad uni;
     private ArchivoUniversidad arch;
-
     /**
-     * Creates new form AgregarCurso
+     * Creates new form AgregarEstudianteCurso
      */
-    public AgregarCurso(Universidad uni, ArchivoUniversidad arch) {
+    public AgregarEstudianteCurso(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
         this.arch = arch;
@@ -37,23 +35,33 @@ public class AgregarCurso extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txt_codigoMateria = new javax.swing.JTextField();
-        txt_codigoProfesor = new javax.swing.JTextField();
+        txt_codigoEstudiante = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        ErrorMSG = new javax.swing.JLabel();
-        txt_grupo = new javax.swing.JTextField();
-        btn_agregar = new javax.swing.JButton();
+        txt_codigoProfesor = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        txt_codigoMateria = new javax.swing.JTextField();
+        ErrorMSG = new javax.swing.JLabel();
+        btn_agregar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txt_Grupo = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txt_nota1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txt_nota2 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txt_nota3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Agregar Curso");
+        jLabel1.setText("Agregar estudiante en curso");
 
-        jLabel2.setText("Codigo materia");
+        jLabel2.setText("Codigo estudiante");
 
         jLabel3.setText("Codigo profesor");
+
+        jLabel4.setText("Codigo materia");
 
         ErrorMSG.setForeground(new java.awt.Color(204, 0, 0));
         ErrorMSG.setText(" ");
@@ -65,14 +73,20 @@ public class AgregarCurso extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Grupo");
-
         btn_cancelar.setText("Cancelar");
         btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelarActionPerformed(evt);
             }
         });
+
+        jLabel5.setText("Grupo");
+
+        jLabel6.setText("Nota 1");
+
+        jLabel7.setText("Nota 2");
+
+        jLabel8.setText("Nota 3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,13 +98,21 @@ public class AgregarCurso extends javax.swing.JFrame {
                     .addComponent(btn_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_codigoMateria, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_codigoEstudiante, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt_codigoProfesor, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_grupo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_codigoMateria, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ErrorMSG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_cancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_cancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_Grupo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_nota1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_nota2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_nota3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,7 +123,7 @@ public class AgregarCurso extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_codigoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_codigoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -109,30 +131,49 @@ public class AgregarCurso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_grupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_codigoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_Grupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_nota1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_nota2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_nota3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(ErrorMSG)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_agregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_cancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
-        Controladores.ControladorCursos CC = new ControladorCursos(uni);
+        Controladores.ControladorEstudianteCurso CEC = new ControladorEstudianteCurso(uni);
 
         try {
-            int codigoMateria = Integer.parseInt(txt_codigoMateria.getText());
+            int codigoEstudiante = Integer.parseInt(txt_codigoEstudiante.getText());
             int codigoProfesor = Integer.parseInt(txt_codigoProfesor.getText());
-            int grupo = Integer.parseInt(txt_grupo.getText());
+            int codigoMateria = Integer.parseInt(txt_codigoMateria.getText());
+            int grupo = Integer.parseInt(txt_Grupo.getText());
+            float nota1 = Float.parseFloat(txt_nota1.getText());
+            float nota2 = Float.parseFloat(txt_nota2.getText());
+            float nota3 = Float.parseFloat(txt_nota3.getText());
 
-            CC.agregarCurso(codigoMateria, codigoProfesor, grupo);
-arch.guardar(uni);
-this.dispose();
+            CEC.agregarEstudianteCurso(codigoEstudiante, codigoProfesor, codigoMateria, grupo, nota1, nota2, nota3);
+            arch.guardar(uni);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }
@@ -149,7 +190,7 @@ this.dispose();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -159,20 +200,20 @@ this.dispose();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstudianteCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstudianteCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstudianteCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstudianteCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new AgregarCurso().setVisible(true);
+                //new AgregarEstudianteCurso().setVisible(true);
             }
         });
     }
@@ -185,8 +226,16 @@ this.dispose();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txt_Grupo;
+    private javax.swing.JTextField txt_codigoEstudiante;
     private javax.swing.JTextField txt_codigoMateria;
     private javax.swing.JTextField txt_codigoProfesor;
-    private javax.swing.JTextField txt_grupo;
+    private javax.swing.JTextField txt_nota1;
+    private javax.swing.JTextField txt_nota2;
+    private javax.swing.JTextField txt_nota3;
     // End of variables declaration//GEN-END:variables
 }

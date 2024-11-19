@@ -4,6 +4,7 @@
  */
 package Vistas.Resenas;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorResenas;
 import modelos.Universidad;
 
@@ -14,13 +15,15 @@ import modelos.Universidad;
 public class VerResenas extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form VerResenas
      */
-    public VerResenas(Universidad uni) {
+    public VerResenas(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**

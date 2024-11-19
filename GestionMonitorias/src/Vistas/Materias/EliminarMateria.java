@@ -4,6 +4,7 @@
  */
 package Vistas.Materias;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorMaterias;
 import modelos.Universidad;
 
@@ -14,13 +15,15 @@ import modelos.Universidad;
 public class EliminarMateria extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form EliminarMateria
      */
-    public EliminarMateria(Universidad uni) {
+    public EliminarMateria(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -113,6 +116,7 @@ public class EliminarMateria extends javax.swing.JFrame {
 
             CM.eliminarMateria(codigo);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             errorMSG.setText(e.getMessage());
         }

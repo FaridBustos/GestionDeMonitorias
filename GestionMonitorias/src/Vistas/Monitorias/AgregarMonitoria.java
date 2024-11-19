@@ -4,6 +4,7 @@
  */
 package Vistas.Monitorias;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorMonitorias;
 import modelos.Fecha;
 import modelos.Hora;
@@ -17,13 +18,15 @@ import modelos.Universidad;
 public class AgregarMonitoria extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form AgregarMonitoria
      */
-    public AgregarMonitoria(Universidad uni) {
+    public AgregarMonitoria(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -195,6 +198,7 @@ public class AgregarMonitoria extends javax.swing.JFrame {
 
             CM.agregarMonitoria(codigoMateria, new Monitoria(codigoMonitoria, new Fecha(dia, mes, anio), new Hora(Hinicio, MInicio), new Hora(HFin, MFin), tema));
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }

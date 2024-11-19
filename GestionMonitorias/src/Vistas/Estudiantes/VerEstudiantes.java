@@ -4,6 +4,7 @@
  */
 package Vistas.Estudiantes;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorEstudiantes;
 import modelos.Universidad;
 
@@ -12,15 +13,16 @@ import modelos.Universidad;
  * @author farid
  */
 public class VerEstudiantes extends javax.swing.JFrame {
-
+    private ArchivoUniversidad arch;
     private Universidad uni;
 
     /**
      * Creates new form VerEstudiantes
      */
-    public VerEstudiantes(Universidad uni) {
+    public VerEstudiantes(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
         Controladores.ControladorEstudiantes CE = new ControladorEstudiantes(uni);
         jTable1.setModel(CE.mostrarEstudiantes());
     }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import modelos.Estudiante;
+import modelos.Estudiante_Curso;
 import modelos.Materia;
 import modelos.Universidad;
 
@@ -62,16 +63,36 @@ public class ControladorMaterias {
         DefaultTableModel modelo = new DefaultTableModel();
 
         //Definimos las columnas del nuevo modelo de tabla
-        String ids[] = {"codigo", "nombre", "monitor"};
+        String ids[] = {"codigo", "nombre", "monitor", "tasa de mortalidad", "tasa de exito", "Ven por segunda vez", "asistencias a monitorias"};
         modelo.setColumnIdentifiers(ids);
 
         //Añadimos las filas al modelo de la tabla
         for (int i = 0; i < materias.size(); i++) {
-            modelo.addRow(new Object[]{materias.get(i).getCodigo(), materias.get(i).getNombre(), materias.get(i).getMonitor().getFullName()});
+            modelo.addRow(new Object[]{materias.get(i).getCodigo(), materias.get(i).getNombre(), materias.get(i).getMonitor().getFullName(), uni.tasaDeMortalidad(materias.get(i).getCodigo()), uni.tasaDeExito(materias.get(i).getCodigo()), uni.tasaDeRepitentes(materias.get(i).getCodigo()), uni.asistenciasUnicasAMonitorias(materias.get(i).getCodigo())});
         }
 
         //Retornamos el modelo de la tabla
         return modelo;
 
+    }
+
+    public TableModel mostrarEstudiantesEnMateria(int codigoMateria) {
+        //obtenemos las cuentas
+        ArrayList<Estudiante_Curso> estudiantes = uni.obtenerTodosLosEstudiantesDeUnaMateria(codigoMateria);
+
+        // Creamos un nuevo modelo de tabla
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        //Definimos las columnas del nuevo modelo de tabla
+        String ids[] = {"codigo", "nombre", "Nota Final"};
+        modelo.setColumnIdentifiers(ids);
+
+        //Añadimos las filas al modelo de la tabla
+        for (int i = 0; i < estudiantes.size(); i++) {
+            modelo.addRow(new Object[]{estudiantes.get(i).getEstudiante().getCodigo(), estudiantes.get(i).getEstudiante().getFullName(), estudiantes.get(i).calcularNotaFinal()});
+        }
+
+        //Retornamos el modelo de la tabla
+        return modelo;
     }
 }

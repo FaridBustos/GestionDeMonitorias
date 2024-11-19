@@ -175,6 +175,7 @@ public class AgregarEstudiante extends javax.swing.JFrame {
             String estado = txt_estado.getText();
             CE.agregarEstudiante(codigo, usuario, contrasena, facultad, programa, nombre, estado);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }

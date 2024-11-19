@@ -4,6 +4,7 @@
  */
 package Vistas.Materias;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorMaterias;
 import modelos.Universidad;
 
@@ -14,13 +15,15 @@ import modelos.Universidad;
 public class VerMaterias extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form VerMaterias
      */
-    public VerMaterias(Universidad uni) {
+    public VerMaterias(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
         Controladores.ControladorMaterias CE = new ControladorMaterias(uni);
         jTable1.setModel(CE.mostrarMaterias());
     }

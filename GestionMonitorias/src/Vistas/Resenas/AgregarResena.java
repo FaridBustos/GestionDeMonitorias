@@ -4,6 +4,7 @@
  */
 package Vistas.Resenas;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorResenas;
 import modelos.Universidad;
 
@@ -14,13 +15,15 @@ import modelos.Universidad;
 public class AgregarResena extends javax.swing.JFrame {
 
     private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form AgregarResena
      */
-    public AgregarResena(Universidad uni) {
+    public AgregarResena(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -140,6 +143,7 @@ public class AgregarResena extends javax.swing.JFrame {
 
             CR.agregarResena(codigoProfesor, codigoResena, puntaje, descripcion);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }

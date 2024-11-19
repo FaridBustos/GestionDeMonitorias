@@ -66,4 +66,18 @@ public class ControladorProfesores {
         return modelo;
     }
 
+    public float obtenerTasaDeRetiro(int codigoProfesor, int codigoMateria) {
+        try {
+            Profesor P = uni.buscarProfesor(codigoProfesor);
+            if(P == null){
+                throw new Exception("No existe el profesor");
+            }
+            return P.tasaDeRetiroDeProfesor(codigoMateria);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+        
+    }
+
 }

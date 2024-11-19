@@ -4,6 +4,7 @@
  */
 package Vistas.Profesores;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorProfesores;
 import modelos.Universidad;
 
@@ -13,14 +14,16 @@ import modelos.Universidad;
  */
 public class EliminarProfesor extends javax.swing.JFrame {
 
-    Universidad uni;
+    private Universidad uni;
+    private ArchivoUniversidad arch;
 
     /**
      * Creates new form EliminarProfesor
      */
-    public EliminarProfesor(Universidad uni) {
+    public EliminarProfesor(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -106,6 +109,7 @@ public class EliminarProfesor extends javax.swing.JFrame {
 
             CP.eliminarProfesor(codigo);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             errorMSG.setText(e.getMessage());
         }

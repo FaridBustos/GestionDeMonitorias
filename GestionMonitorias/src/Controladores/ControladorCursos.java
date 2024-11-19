@@ -56,6 +56,7 @@ public class ControladorCursos {
                 throw new Exception("Error al eliminar el curso");
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

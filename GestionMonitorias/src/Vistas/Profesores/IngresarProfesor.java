@@ -4,6 +4,7 @@
  */
 package Vistas.Profesores;
 
+import Archivos.ArchivoUniversidad;
 import Controladores.ControladorProfesores;
 import modelos.Universidad;
 
@@ -12,15 +13,16 @@ import modelos.Universidad;
  * @author farid
  */
 public class IngresarProfesor extends javax.swing.JFrame {
-
+    private ArchivoUniversidad arch;
     private Universidad uni;
 
     /**
      * Creates new form IngresarProfesor
      */
-    public IngresarProfesor(Universidad uni) {
+    public IngresarProfesor(Universidad uni, ArchivoUniversidad arch) {
         initComponents();
         this.uni = uni;
+        this.arch = arch;
     }
 
     /**
@@ -147,6 +149,7 @@ public class IngresarProfesor extends javax.swing.JFrame {
 
             CP.agregarProfesor(codigo, usuario, contrasena, nombre);
             this.dispose();
+            arch.guardar(uni);
         } catch (Exception e) {
             errorMSG.setText(e.getMessage());
         }
