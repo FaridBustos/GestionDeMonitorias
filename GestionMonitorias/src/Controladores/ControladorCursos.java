@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import modelos.Curso;
+import modelos.Estudiante;
+import modelos.Estudiante_Curso;
 import modelos.Materia;
 import modelos.Profesor;
 import modelos.Universidad;
@@ -87,6 +89,27 @@ public class ControladorCursos {
             System.out.println(e.getMessage());
         }
         return modelo;
+    }
+
+    public Estudiante_Curso obtenerMisNotas(int codigoProfesor, int codigoMateria) {
+        try {
+            if (uni.getUsuarioActual() instanceof Estudiante) {
+                Profesor p = uni.buscarProfesor(codigoProfesor);
+                if (p == null) {
+                    throw new Exception("No existe el profesor");
+                }
+                Estudiante actual = (Estudiante) uni.getUsuarioActual();
+                Estudiante_Curso estudiante = p.buscarEstudianteEnCurso(actual.getCodigo(), codigoMateria);
+                return estudiante;
+
+            } else {
+                throw new Exception("El usuario actual no es un estudiante");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
 }

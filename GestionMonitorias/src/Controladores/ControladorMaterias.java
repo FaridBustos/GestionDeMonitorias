@@ -10,6 +10,7 @@ import javax.swing.table.TableModel;
 import modelos.Estudiante;
 import modelos.Estudiante_Curso;
 import modelos.Materia;
+import modelos.Profesor;
 import modelos.Universidad;
 
 /**
@@ -95,4 +96,34 @@ public class ControladorMaterias {
         //Retornamos el modelo de la tabla
         return modelo;
     }
+
+    public TableModel mostrarCaidos(int codigoMateria, int codigoProfesor) {
+        ArrayList<Estudiante_Curso> estudiantes = new ArrayList<>();
+        // Creamos un nuevo modelo de tabla
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        //Definimos las columnas del nuevo modelo de tabla
+        String ids[] = {"codigo", "nombre", "Nota Final"};
+        modelo.setColumnIdentifiers(ids);
+
+        try {
+            Profesor p = uni.buscarProfesor(codigoProfesor);
+            if (p == null) {
+                throw new Exception("Profesor no existe");
+            }
+
+            estudiantes = p.estudiantesConBajoRendimiento(codigoMateria);
+
+            //Añadimos las filas al modelo de la tabla
+            for (int i = 0; i < estudiantes.size(); i++) {
+                modelo.addRow(new Object[]{estudiantes.get(i).getEstudiante().getCodigo(), estudiantes.get(i).getEstudiante().getFullName(), estudiantes.get(i).calcularNotaFinal()});
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return modelo;
+    }
+
 }

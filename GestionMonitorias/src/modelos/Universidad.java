@@ -113,7 +113,7 @@ public class Universidad implements Serializable {
     }
 
     public boolean VerificarProfesor() {
-        return this.getUsuarioActual().getRole().equals("profesor");
+        return this.getUsuarioActual().getRole().equals("docente");
     }
 
     public boolean VerificarAdmin() {
@@ -336,9 +336,6 @@ public class Universidad implements Serializable {
         }
         return null;
     }
-
-
-    
 
     private ArrayList<Integer> obtenerListaDeCodigosUnicos(ArrayList<Estudiante_Curso> allEstudiantes) {
         ArrayList<Integer> CodigosYaRevisados = new ArrayList<>();

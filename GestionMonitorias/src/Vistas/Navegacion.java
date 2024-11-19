@@ -10,15 +10,22 @@ import Vistas.Cursos.EliminarCurso;
 import Vistas.Cursos.Estudiantes.AgregarEstudianteCurso;
 import Vistas.Cursos.Estudiantes.EliminarEstudianteCurso;
 import Vistas.Cursos.Estudiantes.VerEstudiantesCurso;
+import Vistas.Cursos.MisNotas;
 import Vistas.Cursos.VerCursos;
 import Vistas.Estudiantes.AgregarEstudiante;
 import Vistas.Estudiantes.EliminarEstudiante;
 import Vistas.Estudiantes.VerEstudiantes;
 import Vistas.Materias.EliminarMateria;
+import Vistas.Materias.EstudiantesBajoRendimiento;
+import Vistas.Materias.EstudiantesEnMateria;
 import Vistas.Materias.VerMaterias;
 import Vistas.Materias.agregarMateria;
 import Vistas.Monitorias.AgregarMonitoria;
+import Vistas.Monitorias.Asistencias.AgregarAsistencia;
+import Vistas.Monitorias.Asistencias.EliminarAsistencia;
+import Vistas.Monitorias.Asistencias.VerAsistencias;
 import Vistas.Monitorias.EliminarMonitoria;
+import Vistas.Monitorias.SirvioMonitoria;
 import Vistas.Monitorias.VerMonitorias;
 import Vistas.Profesores.EliminarProfesor;
 import Vistas.Profesores.IngresarProfesor;
@@ -88,11 +95,18 @@ public class Navegacion extends javax.swing.JFrame {
         btn_agregarMateria = new javax.swing.JMenuItem();
         btn_eliminarMateria = new javax.swing.JMenuItem();
         btn_verMaterias = new javax.swing.JMenuItem();
+        btn_estBajoRendi = new javax.swing.JMenuItem();
+        btn_estudiantesEnMateria = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         btn_agregarMonitoria = new javax.swing.JMenuItem();
         btn_eliminarMonitoria = new javax.swing.JMenuItem();
         btn_verMonitorias = new javax.swing.JMenuItem();
+        btn_agregarAsistencia = new javax.swing.JMenuItem();
+        btn_eliminarAsistencia = new javax.swing.JMenuItem();
+        btn_verAsistencias = new javax.swing.JMenuItem();
+        btn_sirvioMonitoria = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
+        btn_misNotas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -277,6 +291,22 @@ public class Navegacion extends javax.swing.JFrame {
         });
         jMenu5.add(btn_verMaterias);
 
+        btn_estBajoRendi.setText("Estudiantes con bajo rendimiento");
+        btn_estBajoRendi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_estBajoRendiActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btn_estBajoRendi);
+
+        btn_estudiantesEnMateria.setText("Estudiantes En Materia");
+        btn_estudiantesEnMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_estudiantesEnMateriaActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btn_estudiantesEnMateria);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Monitorias");
@@ -305,9 +335,50 @@ public class Navegacion extends javax.swing.JFrame {
         });
         jMenu6.add(btn_verMonitorias);
 
+        btn_agregarAsistencia.setText("Agregar Asistencia");
+        btn_agregarAsistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarAsistenciaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(btn_agregarAsistencia);
+
+        btn_eliminarAsistencia.setText("Eliminar Asistencia");
+        btn_eliminarAsistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarAsistenciaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(btn_eliminarAsistencia);
+
+        btn_verAsistencias.setText("Ver asistencias");
+        btn_verAsistencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verAsistenciasActionPerformed(evt);
+            }
+        });
+        jMenu6.add(btn_verAsistencias);
+
+        btn_sirvioMonitoria.setText("Sirvio Monitoria");
+        btn_sirvioMonitoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sirvioMonitoriaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(btn_sirvioMonitoria);
+
         jMenuBar1.add(jMenu6);
 
         jMenu7.setText("Acerca de");
+
+        btn_misNotas.setText("Mis notas");
+        btn_misNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_misNotasActionPerformed(evt);
+            }
+        });
+        jMenu7.add(btn_misNotas);
+
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
@@ -376,26 +447,26 @@ public class Navegacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_verProfesorActionPerformed
 
     private void btn_agregarResenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarResenaActionPerformed
-        
+
         try {
             if (uni.VerificarProfesor()) {
                 throw new Exception("No puedes realizar esta accion.");
             }
-             AgregarResena AR = new AgregarResena(uni, this.arch);
-        AR.setVisible(true);
+            AgregarResena AR = new AgregarResena(uni, this.arch);
+            AR.setVisible(true);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }
     }//GEN-LAST:event_btn_agregarResenaActionPerformed
 
     private void btn_eliminarResenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarResenaActionPerformed
-        
+
         try {
             if (uni.VerificarProfesor()) {
                 throw new Exception("No puedes realizar esta accion.");
             }
-             EliminarResena ER = new EliminarResena(uni, this.arch);
-        ER.setVisible(true);
+            EliminarResena ER = new EliminarResena(uni, this.arch);
+            ER.setVisible(true);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }
@@ -453,26 +524,26 @@ public class Navegacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_verMateriasActionPerformed
 
     private void btn_agregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarCursoActionPerformed
-        
+
         try {
             if (!uni.VerificarAdmin()) {
                 throw new Exception("No puedes realizar esta accion.");
             }
             AgregarCurso AC = new AgregarCurso(uni, this.arch);
-        AC.setVisible(true);
+            AC.setVisible(true);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }
     }//GEN-LAST:event_btn_agregarCursoActionPerformed
 
     private void btn_eliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarCursoActionPerformed
-       
+
         try {
             if (!uni.VerificarAdmin()) {
                 throw new Exception("No puedes realizar esta accion.");
             }
-             EliminarCurso EC = new EliminarCurso(uni, this.arch);
-        EC.setVisible(true);
+            EliminarCurso EC = new EliminarCurso(uni, this.arch);
+            EC.setVisible(true);
         } catch (Exception e) {
             ErrorMSG.setText(e.getMessage());
         }
@@ -528,6 +599,49 @@ public class Navegacion extends javax.swing.JFrame {
         TR.setVisible(true);
     }//GEN-LAST:event_btn_tasaRetiroActionPerformed
 
+    private void btn_agregarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarAsistenciaActionPerformed
+        AgregarAsistencia AA = new AgregarAsistencia(uni, arch);
+        AA.setVisible(true);
+    }//GEN-LAST:event_btn_agregarAsistenciaActionPerformed
+
+    private void btn_eliminarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarAsistenciaActionPerformed
+        EliminarAsistencia EA = new EliminarAsistencia(uni, arch);
+        EA.setVisible(true);
+    }//GEN-LAST:event_btn_eliminarAsistenciaActionPerformed
+
+    private void btn_verAsistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verAsistenciasActionPerformed
+        VerAsistencias VA = new VerAsistencias(uni, arch);
+        VA.setVisible(true);
+    }//GEN-LAST:event_btn_verAsistenciasActionPerformed
+
+    private void btn_sirvioMonitoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sirvioMonitoriaActionPerformed
+        SirvioMonitoria SM = new SirvioMonitoria(uni);
+        SM.setVisible(true);
+    }//GEN-LAST:event_btn_sirvioMonitoriaActionPerformed
+
+    private void btn_estBajoRendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_estBajoRendiActionPerformed
+        EstudiantesBajoRendimiento EBR = new EstudiantesBajoRendimiento(uni);
+        EBR.setVisible(true);
+    }//GEN-LAST:event_btn_estBajoRendiActionPerformed
+
+    private void btn_estudiantesEnMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_estudiantesEnMateriaActionPerformed
+        EstudiantesEnMateria EEM = new EstudiantesEnMateria(uni);
+        EEM.setVisible(true);
+    }//GEN-LAST:event_btn_estudiantesEnMateriaActionPerformed
+
+    private void btn_misNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_misNotasActionPerformed
+        try {
+            if (!uni.VerificarEstudiante()) {
+                throw new Exception("No eres un estudiante.");
+            }
+            MisNotas MN = new MisNotas(uni);
+            MN.setVisible(true);
+        } catch (Exception e) {
+            ErrorMSG.setText(e.getMessage());
+        }
+
+    }//GEN-LAST:event_btn_misNotasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -565,6 +679,7 @@ public class Navegacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorMSG;
+    private javax.swing.JMenuItem btn_agregarAsistencia;
     private javax.swing.JMenuItem btn_agregarCurso;
     private javax.swing.JMenuItem btn_agregarEstCurso;
     private javax.swing.JMenuItem btn_agregarEstudiante;
@@ -572,6 +687,7 @@ public class Navegacion extends javax.swing.JFrame {
     private javax.swing.JMenuItem btn_agregarMonitoria;
     private javax.swing.JMenuItem btn_agregarProfesor;
     private javax.swing.JMenuItem btn_agregarResena;
+    private javax.swing.JMenuItem btn_eliminarAsistencia;
     private javax.swing.JMenuItem btn_eliminarCurso;
     private javax.swing.JMenuItem btn_eliminarEstCurso;
     private javax.swing.JMenuItem btn_eliminarEstudiante;
@@ -579,7 +695,12 @@ public class Navegacion extends javax.swing.JFrame {
     private javax.swing.JMenuItem btn_eliminarMonitoria;
     private javax.swing.JMenuItem btn_eliminarProfesor;
     private javax.swing.JMenuItem btn_eliminarResena;
+    private javax.swing.JMenuItem btn_estBajoRendi;
+    private javax.swing.JMenuItem btn_estudiantesEnMateria;
+    private javax.swing.JMenuItem btn_misNotas;
+    private javax.swing.JMenuItem btn_sirvioMonitoria;
     private javax.swing.JMenuItem btn_tasaRetiro;
+    private javax.swing.JMenuItem btn_verAsistencias;
     private javax.swing.JMenuItem btn_verCurso;
     private javax.swing.JMenuItem btn_verEstCurso;
     private javax.swing.JMenuItem btn_verEstudiantes;

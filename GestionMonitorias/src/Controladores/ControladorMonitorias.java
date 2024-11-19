@@ -7,6 +7,7 @@ package Controladores;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import modelos.Estudiante;
 import modelos.Fecha;
 import modelos.Hora;
 import modelos.Materia;
@@ -84,6 +85,88 @@ public class ControladorMonitorias {
                 String Horai = hi.getHora() + "-" + hi.getMinuto();
                 String Horaf = hi.getHora() + "-" + hi.getMinuto();
                 modelo.addRow(new Object[]{fecha, Horai, Horaf, monitorias.get(i).getTema()});
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return modelo;
+    }
+
+    public boolean sirvioMonitoria(int codigoMateria, int codigoEstudiante) {
+        return uni.sirvioMonitoria(codigoEstudiante, codigoMateria);
+    }
+
+    public void agregarAsistencia(int codigoMateria, int codigoMonitoria, int codigoEstudiante) {
+        try {
+            Materia m = uni.buscarMateria(codigoMateria);
+            if (m == null) {
+                throw new Exception("No se pudo encontrar la materia");
+            }
+            Monitoria mon = m.buscar(codigoMonitoria);
+            if (mon == null) {
+                throw new Exception("No se pudo encontrar la monitoria");
+
+            }
+
+            Estudiante x = uni.buscarEstudiante(codigoEstudiante);
+            if (x == null) {
+                throw new Exception("No se pudo encontrar al estudiante");
+            }
+
+            boolean res = mon.add(x);
+            if (!res) {
+                throw new Exception("No se pudo ingresar la asistencia");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void eliminarAsistencia(int codigoMateria, int codigoMonitoria, int codigoEstudiante) {
+        try {
+            Materia m = uni.buscarMateria(codigoMateria);
+            if (m == null) {
+                throw new Exception("Materia no encontrada");
+            }
+            Monitoria mon = m.buscar(codigoMonitoria);
+            if (mon == null) {
+                throw new Exception("Monitoria no encontrada");
+            }
+
+            boolean res = mon.delete(codigoEstudiante);
+
+            if (!res) {
+                throw new Exception("no se pudo eliminar la asistencia");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public TableModel mostrarAsistencias(int codigoMateria, int codigoMonitoria) {
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        String ids[] = {"Codigo", "nombre"};
+        modelo.setColumnIdentifiers(ids);
+        try {
+
+            Materia m = uni.buscarMateria(codigoMateria);
+            if (m == null) {
+                throw new Exception("materia no existe");
+            }
+
+            Monitoria mon = m.buscar(codigoMonitoria);
+            if (mon == null) {
+                throw new Exception("Monitoria no existe");
+            }
+
+            ArrayList<Estudiante> estudiantes = mon.getAsistencias();
+
+            //Añadimos las filas al modelo de la tabla
+            for (int i = 0; i < estudiantes.size(); i++) {
+
+                modelo.addRow(new Object[]{estudiantes.get(i).getCodigo(), estudiantes.get(i).getFullName()});
             }
 
         } catch (Exception e) {
